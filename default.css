@@ -1,0 +1,28 @@
+#wrap {
+    width: 70%;
+    margin:0 auto;;
+    background-color: white;
+    padding: 15px;
+    border-radius: 0px 0px 15px 15px;
+}
+
+#header {
+    width:100%;
+    background-color: darkorange;
+    height: 60px;
+}
+
+#header h1 {
+    padding-top: 10px;
+}
+
+body {
+    margin: 0px;
+    background-color: whitesmoke;
+}
+
+td img {
+    height: 400px;;
+}
+
+
