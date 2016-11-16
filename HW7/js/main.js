@@ -3,7 +3,7 @@
 // Student in 91.601 GUI Programming 1
 // 11/3/16
 // Javascript that generates a multiplication table based upon myForm
-
+//Taken from example site
 var tblValidator = {   // added in Version 4
 
     highlightError: function (strVarToTest) {
@@ -16,9 +16,10 @@ var tblValidator = {   // added in Version 4
     }
 };
 
+//Custom Jquery validator function that checks whether the first element is less than the second element
+
 jQuery.validator.addMethod("math", function(value, element, params) {
-    console.log(document.getElementById("myForm").elements[params[0]])
-    return document.getElementById("myForm").elements[params[0]].value < document.getElementById("myForm").elements[1].value;
+    return document.getElementById("myForm").elements[params.lower].value <= document.getElementById("myForm").elements[params.upper].value;
 }, jQuery.validator.format("Please make sure the lower bound is less than the upper bound"));
 
 
@@ -28,17 +29,16 @@ $(document).ready(function() {
             alert("submitted!");
         }
     });
-
+//Rules for jQuery Validation
     $("#myForm").validate({
-
         rules: {
-            onfocuslost: false,
+            onkeyup: false,
+            onclick: false,
+            onfocusout: false,
             firstX: {
                 required: true,
                 digits: true,
-                onkeyup: false,
-                onclick: false,
-                // math: {lower: 0, upper: 1}
+                math: {lower: 0, upper: 1}
             },
             secondX: {
                 required: true,
@@ -47,15 +47,14 @@ $(document).ready(function() {
             firstY: {
                 required: true,
                 digits: true,
-                onkeyup: false,
-                onclick: false
-                // math: {lower: 2, upper: 3}
+                math: {lower: 2, upper: 3}
             },
             secondY: {
                 required: true,
                 digits: true
             }
         },
+        //Messages that the user is sent when validation fails, taken from the examples site
         messages : {
             firstX: {
                 required: function () {
@@ -98,7 +97,7 @@ $(document).ready(function() {
                 }
             }
         },
-
+        //generates the table when teh form is submitted
         submitHandler: function(form) {
             generateTable()
         }
