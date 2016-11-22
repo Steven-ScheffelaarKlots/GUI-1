@@ -31,8 +31,10 @@ $(document).ready(function() {
         }
     });
 
+    //initiates the tabs
     $("#tabs").tabs();
 
+    //All of the options for the 4 sliders
     var firstXOptions = {
         min: 1,
         max: 50,
@@ -65,6 +67,7 @@ $(document).ready(function() {
         }
     };
 
+    //Changes the values of every slider when teh corresponding input is changed
     $( "#firstX" ).change(function() {
         $( "#firstXSlider" ).slider( "value", $(this).val() );
     });
@@ -81,86 +84,13 @@ $(document).ready(function() {
         $( "#secondXSlider" ).slider( "value", $(this).val() );
     });
 
+    //Initiates the sliders
     $("#firstXSlider").slider(firstXOptions);
     $("#secondXSlider").slider(secondXOptions);
     $("#firstYSlider").slider(firstYOptions);
     $("#secondYSlider").slider(secondYOptions);
 
-    // // $("#firstX, #secondX, #firstY, #secondY").change(function () {
-    // //     $("#myForm").validate({
-    // //     rules: {
-    // //         // onkeyup: false,
-    // //         // onclick: false,
-    // //         // onfocusout: false,
-    // //         firstX: {
-    // //             required: true,
-    // //             digits: true,
-    // //             math: {lower: 0, upper: 1}
-    // //         },
-    // //         secondX: {
-    // //             required: true,
-    // //             digits: true
-    // //         },
-    // //         firstY: {
-    // //             required: true,
-    // //             digits: true,
-    // //             math: {lower: 2, upper: 3}
-    // //         },
-    // //         secondY: {
-    // //             required: true,
-    // //             digits: true
-    // //         }
-    // //     },
-    // //     //Messages that the user is sent when validation fails, taken from the examples site
-    // //     messages : {
-    // //         firstX: {
-    // //             required: function () {
-    // //                 tblValidator.highlightError("firstX");
-    // //                 return "<br>The Minimum Column Value is required.";
-    // //             },
-    // //             digits: function () {
-    // //                 tblValidator.highlightError("firstX");
-    // //                 return "<br>Please enter only digits for the minimum column value.";
-    // //             }
-    // //         },
-    // //         secondX: {
-    // //             required: function () {
-    // //                 tblValidator.highlightError("secondX");
-    // //                 return "<br>The Maximum Column Value is required.";
-    // //             },
-    // //             digits: function () {
-    // //                 tblValidator.highlightError("secondX");
-    // //                 return "<br>Please enter only digits for the maximum column value.";
-    // //             }
-    // //         },
-    // //         firstY: {
-    // //             required: function () {
-    // //                 tblValidator.highlightError("firstY");
-    // //                 return "<br>The Minimum Row Value is required.";
-    // //             },
-    // //             digits: function () {
-    // //                 tblValidator.highlightError("firstY");
-    // //                 return "<br>Please enter only digits for the Minimum Row Value.";
-    // //             }
-    // //         },
-    // //         secondY: {
-    // //             required: function () {
-    // //                 tblValidator.highlightError("secondY");
-    // //                 return "<br>The Maximum Row Value is required.";
-    // //             },
-    // //             digits: function () {
-    // //                 tblValidator.highlightError("secondY");
-    // //                 return "<br>Please enter only digits for the Maximum Row Value.";
-    // //             }
-    // //         }
-    // //     },
-    // //     //generates the table when teh form is submitted
-    // //     submitHandler: function(form) {
-    // //         generateTable()
-    // //     }
-    // // })
-    // });
-
+    //Validation rules for the form
     $("#myForm").validate({
         rules: {
             // onkeyup: false,
@@ -235,7 +165,7 @@ $(document).ready(function() {
 //Rules for jQuery Validation
 
 });
-
+//Saves whatever table is displayed in the slider tab and displays it in a new tab
 function saveTable() {
     var tabs = $("#tabs").tabs();
     var firstX = $("#firstX").val();
@@ -244,9 +174,10 @@ function saveTable() {
     var secondY = $("#secondY").val();
     var tableData = document.getElementById("table").innerHTML;
     var ul = tabs.find( "ul" );
-    var tabName = firstX.toString() + " - " + secondX.toString() + ", " + firstY
+    var tabNum = returnNewTableNum();
+    var tabName = tabNum + ". " + firstX.toString() + " - " + secondX.toString() + ", " + firstY
     + " - " + secondY;
-    var tabNum = returnNewTableNum()
+
     $( "<li><a href='#" + tabNum + "'>" + tabName + "</a></li>" ).appendTo( ul );
     $( "<div id='" + tabNum + "'>" + tableData + "</div>" ).appendTo( tabs );
     tabs.tabs( "refresh" );
@@ -262,7 +193,9 @@ function generateTable() {
     console.log(firstInputUpper);
     console.log(secondInputLower);
     console.log(secondInputUpper);
+    document.getElementById("table").innerHTML = "";
     var dynamicTable = document.getElementById("table").innerHTML ;
+
 
     //Initial html for setting up the table
     dynamicTable += "<table border='1px'>";
