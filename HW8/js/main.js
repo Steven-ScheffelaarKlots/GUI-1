@@ -16,6 +16,7 @@ var tblValidator = {   // added in Version 4
     }
 };
 
+var tableNum = 0;
 //Custom Jquery validator function that checks whether the first element is less than the second element
 
 jQuery.validator.addMethod("math", function(value, element, params) {
@@ -236,11 +237,19 @@ $(document).ready(function() {
 });
 
 function saveTable() {
+    var tabs = $("#tabs").tabs();
     var firstX = $("#firstX").val();
     var secondX = $("#secondX").val();
     var firstY = $("#firstY").val();
     var secondY = $("#secondY").val();
     var tableData = document.getElementById("table").innerHTML;
+    var ul = tabs.find( "ul" );
+    var tabName = firstX.toString() + " - " + secondX.toString() + ", " + firstY
+    + " - " + secondY;
+    var tabNum = returnNewTableNum()
+    $( "<li><a href='#" + tabNum + "'>" + tabName + "</a></li>" ).appendTo( ul );
+    $( "<div id='" + tabNum + "'>" + tableData + "</div>" ).appendTo( tabs );
+    tabs.tabs( "refresh" );
 }
 
 function generateTable() {
@@ -282,4 +291,9 @@ function generateTable() {
     }
     dynamicTable += "</table>";
     document.getElementById("table").innerHTML = dynamicTable;
+}
+
+function returnNewTableNum() {
+    tableNum = tableNum + 1;
+    return tableNum;
 }
