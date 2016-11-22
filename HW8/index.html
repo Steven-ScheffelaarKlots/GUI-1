@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--Steven Scheffelaar Klots-->
+<!--Steven_ScheffelaarKlots@student.uml.edu-->
+<!--Student in 91.601 GUI Programming 1-->
+<!--11/22/16-->
+<!--Page that generates a multiplication table based on input-->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Multiplication Table</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.1/jquery.validate.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.1/additional-methods.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css"/>
+        <link rel="stylesheet" href="css/default.css"/>
+        <script src="js/main.js"></script>
+    </head>
+    <body>
+        <div id ="header">
+            <h1>Homework 7: Multiplication Table Validation</h1>
+            <p>This page takes user input for 2 upper and lower bounds of numbers to create a multiplication table for. The
+                table is created dynamically, does not allow the user to input non-numeric characters, and checks to see
+                whether the upper bound is greater than the lower bound</p>
+        </div>
+
+        <div id="tabs">
+            <ul>
+                <li><a href="#sliderTab">Slider Tabs</a></li>
+                <li><a href="#b">Tab 2</a></li>
+            </ul>
+        </div>
+
+        <!--Form that requests the users input for what bounds there should be for the multiplication table-->
+        <div id="sliderTab">
+            <div id ="form">
+                <form id="myForm" name="myForm" action="" method="get">
+                    Lower limit of top row: <br>
+                    <input id="firstX" name="firstX"><br>
+                    <div id="firstXSlider" class="slider"></div>
+                    Upper limit of top row: <br>
+                    <input id="secondX" name="secondX"><br>
+                    <div id="secondXSlider" class="slider"></div>
+                    Lower limit of side column: <br>
+                    <input id="firstY" name="firstY"><br>
+                    <div id="firstYSlider" class="slider"></div>
+                    Upper limit of side column: <br>
+                    <input id="secondY" name="secondY"><br>
+                    <div id="secondYSlider" class="slider"></div>
+                    <input id="Submit" type="submit" value="Submit"/>
+                </form>
+                <button onclick="saveTable()">Save Table</button>
+            </div>
+            <!--Div for where the table will be generated-->
+            <div id="table"></div>
+        </div>
+    </body>
+</html>
