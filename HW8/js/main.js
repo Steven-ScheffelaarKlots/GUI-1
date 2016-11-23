@@ -16,7 +16,10 @@ var tblValidator = {   // added in Version 4
     }
 };
 
+//The number of generated table tabs
 var tableNum = 0;
+
+//Options for the validation
 var validationOptions = {
     rules: {
         onkeyup: true,
@@ -177,9 +180,9 @@ function saveTable() {
     var secondX = $("#secondX").val();
     var firstY = $("#firstY").val();
     var secondY = $("#secondY").val();
-    var tableData = document.getElementById("table").innerHTML;
-    var ul = tabs.find( "ul" );
-    var tabNum = returnNewTableNum();
+    var tableData = document.getElementById("table").innerHTML; //Gets the current table HTML
+    var ul = tabs.find( "ul" ); //Variable needed for determining where the next tab should go
+    var tabNum = returnNewTableNum(); //Tab numbered used for determining the tab ID and tab name
     var tabName = tabNum + ". " + firstX.toString() + " - " + secondX.toString() + ", " + firstY
     + " - " + secondY;
 
@@ -226,12 +229,13 @@ function generateTable() {
     dynamicTable += "</table>";
     document.getElementById("table").innerHTML = dynamicTable;
 }
-
+//Returns whatever tab number should be used next
 function returnNewTableNum() {
     tableNum = tableNum + 1;
     return tableNum;
 }
 
+//Deletes tabs. Either deletes 1 tab if 1 number is given, or deletes multiple in a range if 2 numbers are given
 function deleteTabs() {
     var lower = $("#lowerDelete").val();
     var upper = $("#upperDelete").val();
