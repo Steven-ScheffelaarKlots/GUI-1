@@ -17,10 +17,69 @@ var tblValidator = {   // added in Version 4
 };
 
 var tableNum = 0;
+var validationOptions = {
+    rules: {
+        onkeyup: true,
+        onclick: false,
+        onfocusout: false,
+        firstX: {
+            required: true,
+            digits: true,
+            math: {lower: 0, upper: 1}
+        },
+        secondX: {
+            required: true,
+            digits: true
+        },
+        firstY: {
+            required: true,
+            digits: true,
+            math: {lower: 2, upper: 3}
+        },
+        secondY: {
+            required: true,
+            digits: true
+        }
+    },
+    //Messages that the user is sent when validation fails, taken from the examples site
+    messages : {
+        firstX: {
+            digits: function () {
+                tblValidator.highlightError("firstX");
+                return "<br>Please enter only digits for the minimum column value.";
+            }
+        },
+        secondX: {
+            digits: function () {
+                tblValidator.highlightError("secondX");
+                return "<br>Please enter only digits for the maximum column value.";
+            }
+        },
+        firstY: {
+            digits: function () {
+                tblValidator.highlightError("firstY");
+                return "<br>Please enter only digits for the Minimum Row Value.";
+            }
+        },
+        secondY: {
+            digits: function () {
+                tblValidator.highlightError("secondY");
+                return "<br>Please enter only digits for the Maximum Row Value.";
+            }
+        }
+    },
+    //generates the table when teh form is submitted
+    submitHandler: function(form) {
+        generateTable()
+    },
+    success: function() {
+        generateTable()
+    }
+};
 //Custom Jquery validator function that checks whether the first element is less than the second element
 
 jQuery.validator.addMethod("math", function(value, element, params) {
-    return document.getElementById("myForm").elements[params.lower].value <= document.getElementById("myForm").elements[params.upper].value;
+    return parseInt(document.getElementById("myForm").elements[params.lower].value) <= parseInt(document.getElementById("myForm").elements[params.upper].value);
 }, jQuery.validator.format("Please make sure the lower bound is less than the upper bound"));
 
 
@@ -40,6 +99,9 @@ $(document).ready(function() {
         max: 50,
         slide: function (e, ui) {
             $("#firstX").val(ui.value)
+        },
+        change: function () {
+            $("#myForm").valid();
         }
     };
 
@@ -48,6 +110,9 @@ $(document).ready(function() {
         max: 50,
         slide: function (e, ui) {
             $("#secondX").val(ui.value)
+        },
+        change: function () {
+            $("#myForm").valid();
         }
     };
 
@@ -56,6 +121,9 @@ $(document).ready(function() {
         max: 50,
         slide: function (e, ui) {
             $("#firstY").val(ui.value)
+        },
+        change: function () {
+            $("#myForm").valid();
         }
     };
 
@@ -64,11 +132,16 @@ $(document).ready(function() {
         max: 50,
         slide: function (e, ui) {
             $("#secondY").val(ui.value)
+        },
+        change: function () {
+            $("#myForm").valid();
         }
+
     };
 
     //Changes the values of every slider when teh corresponding input is changed
     $( "#firstX" ).change(function() {
+        $("#myForm").valid();
         $( "#firstXSlider" ).slider( "value", $(this).val() );
     });
 
@@ -77,11 +150,13 @@ $(document).ready(function() {
     });
 
     $( "#firstY" ).change(function() {
-        $( "#firstXSlider" ).slider( "value", $(this).val() );
+        $("#myForm").valid();
+        $( "#firstYSlider" ).slider( "value", $(this).val() );
     });
 
     $( "#secondY" ).change(function() {
-        $( "#secondXSlider" ).slider( "value", $(this).val() );
+        $("#myForm").valid();
+        $( "#secondYSlider" ).slider( "value", $(this).val() );
     });
 
     //Initiates the sliders
@@ -91,77 +166,7 @@ $(document).ready(function() {
     $("#secondYSlider").slider(secondYOptions);
 
     //Validation rules for the form
-    $("#myForm").validate({
-        rules: {
-            onkeyup: false,
-            onclick: false,
-            onfocusout: false,
-            firstX: {
-                required: true,
-                digits: true,
-                math: {lower: 0, upper: 1}
-            },
-            secondX: {
-                required: true,
-                digits: true
-            },
-            firstY: {
-                required: true,
-                digits: true,
-                math: {lower: 2, upper: 3}
-            },
-            secondY: {
-                required: true,
-                digits: true
-            }
-        },
-        //Messages that the user is sent when validation fails, taken from the examples site
-        messages : {
-            firstX: {
-                required: function () {
-                    tblValidator.highlightError("firstX");
-                    return "<br>The Minimum Column Value is required.";
-                },
-                digits: function () {
-                    tblValidator.highlightError("firstX");
-                    return "<br>Please enter only digits for the minimum column value.";
-                }
-            },
-            secondX: {
-                required: function () {
-                    tblValidator.highlightError("secondX");
-                    return "<br>The Maximum Column Value is required.";
-                },
-                digits: function () {
-                    tblValidator.highlightError("secondX");
-                    return "<br>Please enter only digits for the maximum column value.";
-                }
-            },
-            firstY: {
-                required: function () {
-                    tblValidator.highlightError("firstY");
-                    return "<br>The Minimum Row Value is required.";
-                },
-                digits: function () {
-                    tblValidator.highlightError("firstY");
-                    return "<br>Please enter only digits for the Minimum Row Value.";
-                }
-            },
-            secondY: {
-                required: function () {
-                    tblValidator.highlightError("secondY");
-                    return "<br>The Maximum Row Value is required.";
-                },
-                digits: function () {
-                    tblValidator.highlightError("secondY");
-                    return "<br>Please enter only digits for the Maximum Row Value.";
-                }
-            }
-        },
-        //generates the table when teh form is submitted
-        submitHandler: function(form) {
-            generateTable()
-        }});
+    $("#myForm").validate(validationOptions);
 //Rules for jQuery Validation
 
 });
@@ -185,14 +190,10 @@ function saveTable() {
 
 function generateTable() {
     //Variables for holding the user input and the table html being put on the page
-    var firstInputLower = document.getElementById("myForm").elements[0].value;
-    var firstInputUpper = document.getElementById("myForm").elements[1].value;
-    var secondInputLower = document.getElementById("myForm").elements[2].value;
-    var secondInputUpper = document.getElementById("myForm").elements[3].value;
-    console.log(firstInputLower);
-    console.log(firstInputUpper);
-    console.log(secondInputLower);
-    console.log(secondInputUpper);
+    var firstInputLower = parseInt(document.getElementById("myForm").elements[0].value);
+    var firstInputUpper = parseInt(document.getElementById("myForm").elements[1].value);
+    var secondInputLower = parseInt(document.getElementById("myForm").elements[2].value);
+    var secondInputUpper = parseInt(document.getElementById("myForm").elements[3].value);
     document.getElementById("table").innerHTML = "";
     var dynamicTable = document.getElementById("table").innerHTML ;
 
