@@ -93,9 +93,9 @@ $(document).ready(function() {
     //Validation rules for the form
     $("#myForm").validate({
         rules: {
-            // onkeyup: false,
-            // onclick: false,
-            // onfocusout: false,
+            onkeyup: false,
+            onclick: false,
+            onfocusout: false,
             firstX: {
                 required: true,
                 digits: true,
@@ -178,7 +178,7 @@ function saveTable() {
     var tabName = tabNum + ". " + firstX.toString() + " - " + secondX.toString() + ", " + firstY
     + " - " + secondY;
 
-    $( "<li><a href='#" + tabNum + "'>" + tabName + "</a></li>" ).appendTo( ul );
+    $( "<li id='tab" + tabNum + "'><a href='#" + tabNum + "'>" + tabName + "</a></li>" ).appendTo( ul );
     $( "<div id='" + tabNum + "'>" + tableData + "</div>" ).appendTo( tabs );
     tabs.tabs( "refresh" );
 }
@@ -229,4 +229,26 @@ function generateTable() {
 function returnNewTableNum() {
     tableNum = tableNum + 1;
     return tableNum;
+}
+
+function deleteTabs() {
+    var lower = $("#lowerDelete").val();
+    var upper = $("#upperDelete").val();
+    var i;
+    var tabID;
+    if (lower != undefined && upper == undefined) {
+        tabID = "#tab" + lower;
+        $(tabID).hide();
+    } else {
+        if (upper < lower) {
+            for (i = upper; i <= lower; i++) {
+                tabID = "#tab" + i;
+                $(tabID).hide();
+            }
+        } else
+            for (i = lower; i <= upper; i++) {
+                tabID = "#tab" + i;
+                $(tabID).hide();
+            }
+    }
 }
