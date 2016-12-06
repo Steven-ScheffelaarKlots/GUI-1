@@ -1,0 +1,17 @@
+
+#board {
+    display: block;
+    font-size: 0;
+    border-color: black ;
+    border-width: 2px;
+}
+
+#rack{
+
+    //text-align: center ;
+    display: inline ;
+}
+
+.draggable, .droppable {
+    display: inline-block;
+}
