@@ -13,64 +13,35 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.1/additional-methods.min.js"></script>
         <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
         <script src="https://code.jquery.com/ui/jquery-ui-git.js"></script>
-
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css"/>
         <link rel="stylesheet" href="css/default.css"/>
         <script src="js/main.js"></script>
     </head>
     <body>
         <div id="container">
-            <div id="content">
-                <div class="post">
+            <h1>Scrabble Mini Game</h1>
+            <!--Playing board for Scrabble-->
+            <div id ="board"></div>
+            <br>
+            <br>
 
-                    <h1>Scrabble Mini Game</h1>
-
-                    <!-- board with tiles -->
-
-                    <div id ="board">
-                        <div class="droppable">
-                            <img src="img/triple_word_square.png" alt="tripleword">
-                        </div><div class="droppable">
-                        <img src="img/plain_square.png" alt="plain">
-                    </div>
-                        <div class="droppable">
-                            <img src="img/plain_square.png" alt="plain">
-                        </div>
-                        <div class="droppable">
-                            <img src="img/plain_square.png" alt="plain">
-                        </div>
-                        <div class="droppable">
-                            <img src="img/double_letter_square.png" alt="doubleletter">
-                        </div>
-                        <div class="droppable">
-                            <img src="img/plain_square.png" alt="plain">
-                        </div>
-                        <div class="droppable">
-                            <img src="img/plain_square.png" alt="plain">
-                        </div>
-                    </div>
-                    <br>
-                    <br>
-
-                    <!-- empty rack-- tiles get generated from document ready function -->
-
-                    <div id="rack">
-                    </div>
-
-                    <div id="score">
-                        <p>Score: 0</p>
-                    </div>
-
-                    <div id="totalScore">
-                        <p>Score: 0</p>
-                    </div>
-                    <!-- style the score tracker better later -->
-
-                    <!-- maybe this should be renamed later -->
-                    <button onClick="Deal()">Next Round</button>
-
-                </div>
+            <!--Rack where users tiles are generated-->
+            <div id="rack">
             </div>
+
+            <!--Tracker for the current round score-->
+            <div id="score">
+                <p>Score: 0</p>
+            </div>
+
+            <!--Tracker for the total score for the player-->
+            <div id="totalScore">
+                <p>Score: 0</p>
+            </div>
+
+            <!--Starts a new round-->
+            <button onClick="Deal()">Next Round</button>
+
         </div>
 
     </body>
