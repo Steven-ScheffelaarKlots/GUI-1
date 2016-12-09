@@ -5,33 +5,59 @@
 <!--11/3/16-->
 <!--Page that generates a multiplication table based on input-->
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Multiplication Table</title>
-    <script src="js/main.js"></script>
-</head>
-<body>
-    <div id ="header">
-        <h1>Homework 6: Multiplication Table</h1>
-        <p>This page takes user input for 2 upper and lower bounds of numbers to create a multiplication table for. The
-        table is created dynamically, does not allow the user to input non-numeric characters, and checks to see
-        whether the upper bound is greater than the lower bound</p>
-    </div>
-    <!--Form that requests the users input for what bounds there should be for the multiplication table-->
-    <div id ="form">
-        <form id="myForm" action="form_action.asp">
-            Lower limit of top row: <br>
-            <input type="number"><br>
-            Upper limit of top row: <br>
-            <input type="number"><br>
-            Lower limit of side column: <br>
-            <input type="number"><br>
-            Upper limit of side column: <br>
-            <input type="number"><br>
-            <input id="Submit" type="button" value="Submit" onclick="generateTable();" />
-        </form>
-    </div>
-    <!--Div for where the table will be generated-->
-    <div id="table"></div>
-  </body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Multiplication Table</title>
+        <script src="js/main.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/default.css">
+    </head>
+    <body>
+        <div id="header">
+            <h1>Steven Scheffelaar Klots</h1>
+        </div>
+        <div id="wrap">
+            <div class="sidebar">
+                <h1>Index</h1>
+                <ul>
+                    <li><a href="Lecture4.html">Lecture 4 Assignment</a></li>
+                    <li><a href="HW3/index.html">Homework 3</a></li>
+                    <li><a href="HW6/index.html">Homework 6</a></li>
+                    <li><a href="HW8/index.html">Homework 6</a></li>
+                    <li><a href="In-Class-5/example.html">In Class 5</a> </li>
+                </ul>
+            </div>
+            <div class="content">
+                <div>
+                    <h1>Homework 6: Multiplication Table</h1>
+                    <p>This page takes user input for 2 upper and lower bounds of numbers to create a multiplication table for. The
+                        table is created dynamically, does not allow the user to input non-numeric characters, and checks to see
+                        whether the upper bound is greater than the lower bound</p>
+                </div>
+                <!--Form that requests the users input for what bounds there should be for the multiplication table-->
+                <div id ="form">
+                    <form id="myForm" action="form_action.asp">
+                        Lower limit of top row: <br>
+                        <input type="number"><br>
+                        Upper limit of top row: <br>
+                        <input type="number"><br>
+                        Lower limit of side column: <br>
+                        <input type="number"><br>
+                        Upper limit of side column: <br>
+                        <input type="number"><br>
+                        <input id="Submit" type="button" value="Submit" onclick="generateTable();" />
+                    </form>
+                    <div id="table"></div>
+                </div>
+            </div>
+            <div class="footer">
+                <p>
+                    <a href="http://jigsaw.w3.org/css-validator/check/referer">
+                        <img style="border:0;width:88px;height:31px"
+                             src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+                             alt="Valid CSS!" />
+                    </a>
+                </p>
+            </div>
+        </div>
+    </body>
 </html>

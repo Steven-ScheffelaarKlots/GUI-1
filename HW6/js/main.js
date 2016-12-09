@@ -10,22 +10,45 @@ function generateTable() {
     var firstInputUpper = document.getElementById("myForm").elements[1].value;
     var secondInputLower = document.getElementById("myForm").elements[2].value;
     var secondInputUpper = document.getElementById("myForm").elements[3].value;
-    console.log(firstInputLower);
-    console.log(firstInputUpper);
-    console.log(secondInputLower);
-    console.log(secondInputUpper);
     var dynamicTable = "";
+
+
+        //Error checking for no input
+    if (firstInputLower === "" || firstInputUpper === "" || secondInputLower === "" || secondInputUpper === "") {
+        document.getElementById("table").innerHTML = "<div class='error'>You did not input a value</div>";
+        return
+    }
+
+        //Error checking for negative inputs
+    if(firstInputLower <= 0) {
+        document.getElementById("table").innerHTML = "<div class='error'>You have an input that is negative</div>";
+        return
+    }
+    if(firstInputUpper <= 0) {
+        document.getElementById("table").innerHTML = "<div class='error'>You have an input that is negative</div>";
+        return
+    }
+    if(secondInputLower <= 0) {
+        document.getElementById("table").innerHTML = "<div class='error'>You have an input that is negative</div>";
+        return
+    }
+    if(secondInputUpper <= 0) {
+        document.getElementById("table").innerHTML = "<div class='error'>You have an input that is negative</div>";
+        return
+    }
 
     //Error checking to see whether the bounds are correct
     if(firstInputLower > firstInputUpper)
     {
-        document.getElementById("table").innerHTML = "Your lower bound is greater than your upper bound for the top row";
+        document.getElementById("table").innerHTML = "<div class='error'> Your lower bound is greater than your " +
+            "upper bound for the top row</div>";
         return;
     }
 
     if(secondInputLower > secondInputUpper)
     {
-        document.getElementById("table").innerHTML = "Your lower bound is greater than your upper bound for the side column";
+        document.getElementById("table").innerHTML = "<div class='error'>Your lower bound is greater than your " +
+            "upper bound for the side column</div>";
         return;
     }
 
