@@ -14,22 +14,26 @@
     border-radius: 0 0 15px 15px;
 }
 
+/* Styling for the header and the main title of the page*/
 #header {
     width:100%;
     background-color: darkorange;
     height: 60px;
 }
 
+/*Adds padding around the content of the header*/
 #header h1 {
     padding-top: 10px;
     padding-left: 20px;
 }
 
+/*Adds the color for the backdrop of the page*/
 body {
     margin: 0;
     background-color: whitesmoke;
 }
 
+/*Changes the height of the picture of my face*/
 td img {
     height: 400px;;
 }
@@ -54,6 +58,7 @@ td img {
     font-size: 20px;
 }
 
+/*Position for the image in the main content of the page*/
 .content img {
     float: left;
     width: 200px;;

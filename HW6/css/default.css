@@ -14,12 +14,14 @@
     border-radius: 0 0 15px 15px;
 }
 
+/*Styling for the main header of the page*/
 #header {
     width:100%;
     background-color: darkorange;
     height: 60px;
 }
 
+/*Padding for the content of the header*/
 #header h1 {
     padding-top: 10px;
     padding-left: 20px;

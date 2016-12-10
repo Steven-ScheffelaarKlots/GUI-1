@@ -1,3 +1,4 @@
+/*Wraps up the entire page except the header and centers it*/
 #wrap {
     width: 70%;
     margin:0 auto;;
@@ -6,15 +7,18 @@
     border-radius: 0px 0px 15px 15px;
 }
 
+/*Styling for the header*/
 #header {
     width:100%;
     background-color: darkorange;
     height: 60px;
 }
 
+/*Adds padding around the content of the header*/
 #header h1 {
     padding-top: 10px;
 }
+
 
 body {
     margin: 0px;
