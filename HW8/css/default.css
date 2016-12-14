@@ -1,3 +1,83 @@
+/*Steven Scheffelaar Klots*/
+/*Steven_ScheffelaarKlots@student.uml.edu*/
+/*Student in 91.601 GUI Programming 1*/
+/*10/4/16*/
+/*Main css file for my site*/
+
+
+/*Code for aligning content in the middle of the page*/
+#wrap {
+    width: 80%;
+    margin:0 auto;;
+    background-color: white;
+    padding: 1px;
+    border-radius: 0 0 15px 15px;
+}
+
+/*Styling for the main header of the page*/
+#header {
+    width:100%;
+    background-color: darkorange;
+    height: 60px;
+}
+
+/*Padding for the content of the header*/
+#header h1 {
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
+#myForm {
+    padding-bottom:10px;
+}
+
+body {
+    margin: 0;
+    background-color: whitesmoke;
+}
+
+td img {
+    height: 400px;;
+}
+
+/*Sidebar class for the index sidebar*/
+.sidebar{
+    width: 240px;
+    float: none;
+    background: lightgray;
+    display: table-cell;
+    padding-left: 10px;
+}
+
+/*Content class for the main content of the page*/
+.content {
+    position: relative;
+    display: table-cell;
+    padding-left: 10px;
+}
+
+.content p {
+    font-size: 20px;
+}
+
+.content img {
+    float: left;
+    width: 200px;;
+    margin: 10px;
+}
+
+.footer {
+    width: 100%;
+    background-color: #3399CC;
+    border-radius: 0 0 15px 15px;
+    text-align: right;
+    padding: 1px 0 1px 0;
+}
+
+.error {
+    color: red;
+}
+
 .slider {
     width: 200px;
     margin: 10px 0;

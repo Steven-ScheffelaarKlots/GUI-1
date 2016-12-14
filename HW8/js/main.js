@@ -200,6 +200,45 @@ function generateTable() {
     document.getElementById("table").innerHTML = "";
     var dynamicTable = document.getElementById("table").innerHTML ;
 
+            //Error checking for no input
+    if (isNaN(firstInputLower) || isNaN(firstInputUpper) || isNaN(secondInputLower) || isNaN(secondInputUpper)) {
+        document.getElementById("table").innerHTML = "<div class='error'>You did not input a value</div>";
+        return
+    }
+
+        //Error checking for negative inputs
+    if(firstInputLower <= 0) {
+        document.getElementById("table").innerHTML = "<div class='error'>You have an input that is negative</div>";
+        return
+    }
+    if(firstInputUpper <= 0) {
+        document.getElementById("table").innerHTML = "<div class='error'>You have an input that is negative</div>";
+        return
+    }
+    if(secondInputLower <= 0) {
+        document.getElementById("table").innerHTML = "<div class='error'>You have an input that is negative</div>";
+        return
+    }
+    if(secondInputUpper <= 0) {
+        document.getElementById("table").innerHTML = "<div class='error'>You have an input that is negative</div>";
+        return
+    }
+
+    //Error checking to see whether the bounds are correct
+    if(firstInputLower > firstInputUpper)
+    {
+        document.getElementById("table").innerHTML = "<div class='error'> Your lower bound is greater than your " +
+            "upper bound for the top row</div>";
+        return;
+    }
+
+    if(secondInputLower > secondInputUpper)
+    {
+        document.getElementById("table").innerHTML = "<div class='error'>Your lower bound is greater than your " +
+            "upper bound for the side column</div>";
+        return;
+    }
+
 
     //Initial html for setting up the table
     dynamicTable += "<table border='1px'>";
