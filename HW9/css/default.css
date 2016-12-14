@@ -19,3 +19,60 @@
 .draggable, .droppable {
     display: inline-block;
 }
+
+#wrap {
+    width: 80%;
+    margin:0 auto;;
+    background-color: white;
+    padding: 1px;
+    border-radius: 0 0 15px 15px;
+}
+
+/* Styling for the header and the main title of the page*/
+#header {
+    width:100%;
+    background-color: darkorange;
+    height: 60px;
+}
+
+/*Adds padding around the content of the header*/
+#header h1 {
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
+/*Adds the color for the backdrop of the page*/
+body {
+    margin: 0;
+    background-color: whitesmoke;
+}
+
+/*Sidebar class for the index sidebar*/
+.sidebar{
+    width: 240px;
+    float: none;
+    background: lightgray;
+    display: table-cell;
+    padding-left: 10px;
+}
+
+/*Content class for the main content of the page*/
+.content {
+    position: relative;
+    display: table-cell;
+    padding-left: 10px;
+}
+
+.content p {
+    font-size: 20px;
+}
+
+
+.footer {
+    width: 100%;
+    background-color: #3399CC;
+    border-radius: 0 0 15px 15px;
+    text-align: right;
+    padding: 1px 0 1px 0;
+}
+
